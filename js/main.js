@@ -4,9 +4,9 @@ var prevWord;
 $(document).ready(function() {
 	var video = $('#ourvideo');
 	console.log(video);
-	// video.on('timeupdate', function() {
-	// 	$('.currentTime').text(video[0].currentTime);
-	// });
+	video.on('timeupdate', function() {
+		$('.currentTime').text(video[0].currentTime);
+	});
 });
 
 $(document).ready(function() {
