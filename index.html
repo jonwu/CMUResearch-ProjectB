@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="cs/style.css"/>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/places.js"></script>
+	<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/google-maps.js"></script>
+</head>
+<body>
+	<div id="map-canvas" style="width: 50%; height: 100%; float:right;"></div>
+	<div id="video_container" style="width:50%;float: left;">
+
+		<video width="100%" id="ourvideo" controls>
+			<source type="video/mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" id="mp4"/>
+			<source type="video/webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" id="webm"/>
+			<source type="video/ogg" src="http://media.w3.org/2010/05/sintel/trailer.ogv" id="ogv"/>
+		</video>
+
+		<div class="progressTime" style="color:white">
+			Current play time:
+			<span class="currentTime"></span><br>
+			Transcript:
+			<span class="transcript"></span>
+		</div>
+		<div id="footnotediv"></div>
+	</div>
+
+</body>
+</html>
