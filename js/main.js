@@ -4,37 +4,9 @@ var prevWord;
 $(document).ready(function() {
 	var video = $('#ourvideo');
 	console.log(video);
-	video.on('timeupdate', function() {
-		$('.currentTime').text(video[0].currentTime);
-	});
-
-
-	// add a footnote at 2 seconds, and remove it at 6 seconds
-	// pop.code({
-	// 	start: 1,
-	// 	end: 3,
-	// 	onStart: function(options) {
-	// 		bermudaTriangle.setOptions({
-	// 			strokeColor: '#FFEC16',
-	// 			strokeOpacity: 0.8,
-	// 			strokeWeight: 2,
-	// 			fillColor: '#FFEC16',
-	// 			fillOpacity: 0.35
-	// 		});
-	// 	},
-	// 	onEnd: function(options) {
-	// 		bermudaTriangle.setOptions({
-	// 			strokeColor: '#FF0000',
-	// 			strokeOpacity: 0.8,
-	// 			strokeWeight: 2,
-	// 			fillColor: '#FF0000',
-	// 			fillOpacity: 0.35
-	// 		});
-	// 	}
+	// video.on('timeupdate', function() {
+	// 	$('.currentTime').text(video[0].currentTime);
 	// });
-
-	// play the video right away
-	// pop.play();
 });
 
 $(document).ready(function() {
@@ -106,7 +78,7 @@ function videoListener(s_time, e_time, name, text) {
 						fillOpacity: 0.35
 					});
 				} else {
-					console.log('Not in database');
+					console.log(key +' is not in database');
 				}
 
 			}
@@ -124,7 +96,7 @@ function videoListener(s_time, e_time, name, text) {
 						fillOpacity: 0.35
 					});
 				} else {
-					console.log('Not in database');
+					console.log(key + ' is not in database');
 				}
 			}
 		}
