@@ -2,15 +2,16 @@ var pop;
 var annotations = new Object();
 var prevWord;
 $(document).ready(function() {
-	var video = $('#ourvideo');
-	console.log(video);
-	video.on('timeupdate', function() {
-		$('.currentTime').text(video[0].currentTime);
-	});
+	// var video = $('#ourvideo');
+	// console.log(video);
+	// video.on('timeupdate', function() {
+
+	// 	$('.currentTime').text(video[0].currentTime);
+	// });
 });
 
 $(document).ready(function() {
-	pop = Popcorn("#ourvideo");
+	pop = Popcorn.youtube("#youtube", "http://www.youtube.com/v/bu-Au2ga9Y0");
 	$.ajax({
 		url: 'David_references.xml',
 		type: 'GET',
@@ -22,6 +23,10 @@ $(document).ready(function() {
 			var $xml = $(data);
 			var word = $xml.find('word');
 			var annotation = $xml.find('annotation');
+			var previous = 0;
+			var utterancePeriod = .5;
+			var sentence;
+			var utterances = [];
 
 			for (var i = 0; i < annotation.length; i++) {
 				var label = $(annotation[i]).attr('label');
@@ -42,16 +47,36 @@ $(document).ready(function() {
 				};
 				// console.log(annotations);
 			};
-
+			var offset = 38.4;
 			for (var i = 0; i < word.length; i++) {
 				var text = $(word[i]).attr('text');
 				var s_time = $(word[i]).attr('s_time');
 				var e_time = $(word[i]).attr('e_time');
+				s_time = parseFloat(s_time) + offset;
+				e_time = parseFloat(e_time) + offset;
 				var name = $(word[i]).attr('name');
 				var speaker = $(word[i]).attr('speaker');
+				// if (i != 0) {
+				// 	if (s_time - previous < .5) {
+				// 		sentence += " " + text;
+				// 	} else {
+				// 		utterances.push(sentence);
+				// 		sentence = text;
+				// 	}
+				// } else {
+				// 	previous = e_time;
+				// 	word = text;
+				// 	sentence = text;
+				// 	console.log(sentence);
+				// }
 				videoListener(s_time, e_time, name, text);
-
 			};
+			pop.listen("timeupdate", function() {
+				$('.currentTime').text(this.currentTime());
+			});
+			pop.play();
+			// utterances.push(sentence);
+			// console.log('utter', utterances);
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			//called when there is an error
@@ -78,7 +103,7 @@ function videoListener(s_time, e_time, name, text) {
 						fillOpacity: 0.35
 					});
 				} else {
-					console.log(key +' is not in database');
+					console.log(key + ' is not in database');
 				}
 
 			}
