@@ -11,7 +11,7 @@ function initialize(lat, lng) {
 	var mapOptions = {
 		zoom: 16,
 		center: new google.maps.LatLng(37.410483, -122.059758),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.SATELLITE
 	};
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -30,16 +30,27 @@ function initialize(lat, lng) {
 			polygon = new google.maps.Polygon({
 				paths: polygonCoords,
 				strokeColor: '#FF0000',
-				strokeOpacity: 0.8,
+				strokeOpacity: 0.0,
 				strokeWeight: 2,
 				fillColor: '#FF0000',
-				fillOpacity: 0.35
+				fillOpacity: 0.0
 			});
 			polygon.setMap(map);
 			polygonList[key] = polygon;
 		}
 	}
-	console.log(polygonList);
+	getLocation();
+	getAnnotations();
+	// console.log(polygonList);
+}
+
+function createMarker(lat, lng) {
+	var marker = new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(lat, lng),
+		zIndex: 1
+	});
+	return marker;
 }
 
 
