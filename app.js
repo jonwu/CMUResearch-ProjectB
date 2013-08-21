@@ -5,9 +5,7 @@ var express = require('express'),
 	path = require('path');
 
 server.listen(8000);
-app.use("/js", express.static(__dirname + '/js'));
-app.use("/css", express.static(__dirname + '/css'));
-app.use("/img", express.static(__dirname + '/img'));
+app.use("/", express.static(__dirname + '/'));
 app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');
 });
