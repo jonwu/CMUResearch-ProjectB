@@ -164,7 +164,7 @@ function transcriptListener(start, end, content, speaker) {
 		end: end,
 		onStart: function(options) {
 			$('.transcript').append("<a class='" + speaker + "'>" + content + "</a>");
-			$('.transcript').scrollTop(9999);
+			$('.transcript').scrollTop(99999);
 		},
 		onEnd: function(options) {
 			// $('.transcript').append();
