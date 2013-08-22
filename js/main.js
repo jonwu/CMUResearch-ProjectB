@@ -2,9 +2,12 @@ var pop;
 var annotations = new Object();
 var prevWord;
 var speakers = {};
+var youtubeURL = "http://www.youtube.com/v/bu-Au2ga9Y0";
+var xmlData = 'xml/downsampled.xml';
+var xmlAnnotation = 'xml/David_references.xml';
 
 $(document).ready(function() {
-	pop = Popcorn.youtube("#youtube", "http://www.youtube.com/v/bu-Au2ga9Y0");
+	pop = Popcorn.youtube("#youtube", youtubeURL);
 	$('.clear').on('click', function() {
 		$('.transcript').text('');
 	});
@@ -14,7 +17,7 @@ $(document).ready(function() {
 function getLocation() {
 	console.log('start!');
 	$.ajax({
-		url: 'downsampled.xml',
+		url: xmlData,
 		type: 'GET',
 		dataType: 'xml',
 		complete: function(xhr, textStatus) {},
@@ -51,7 +54,7 @@ function getLocation() {
 
 function getAnnotations() {
 	$.ajax({
-		url: 'David_references.xml',
+		url: xmlAnnotation,
 		type: 'GET',
 		dataType: 'xml',
 		complete: function(xhr, textStatus) {

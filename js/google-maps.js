@@ -1,8 +1,6 @@
 var infowindow;
 var map;
 var geocoder;
-var bermudaTriangle;
-var ctaLayer;
 var polygonList = {}
 
 
